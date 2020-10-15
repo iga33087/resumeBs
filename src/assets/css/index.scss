@@ -23,6 +23,24 @@ html,body {
   display: flex;
 }
 
+.loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.5);
+  .loadingIcon {
+    z-index: 100;
+    color:#fff;
+    font-size: 100px;
+  }
+}
+
 .goRight {
   display: flex;
   justify-content: flex-end;
@@ -39,6 +57,44 @@ html,body {
   background-color: $color1;  
   position: relative;
   z-index: 2;
+}
+
+.leftMenuItem {
+  -moz-user-select: none;
+  -webkit-user-select: none; 
+  color:#fff;
+  text-decoration:none;
+  cursor: pointer;
+  .leftMenuItemBox {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: $fontSize3;
+    &:hover {
+      background-color: rgba(0,0,0,0.1);
+    }
+  }
+  .leftMenuItemBoxIcon {
+    font-size: $fontSize1;
+    margin: 0 10px 0 0;
+  }
+  .openIcon {
+    transform: rotate(0deg);
+    transition-duration: 0.2s;   
+  }
+  .isOpen {
+    transform: rotate(180deg);
+    transition-duration: 0.2s;
+  }
+  .leftMenuItemBoxChildren {
+    padding: 0 0 0 10px;
+  }
+}
+
+.router-link-active {
+  .leftMenuItemBox {
+    background-color: rgba(0,0,0,0.1);
+  }
 }
 
 .content {

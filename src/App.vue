@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Loading v-if="$store.state.loading"></Loading>
     <LeftMenu></LeftMenu>
     <div class="content">
       <Header></Header>
@@ -13,15 +14,15 @@
 </template>
 
 <script>
+import Loading from "@/components/Loading"
 import Header from "@/components/Header"
 import LeftMenu from "@/components/LeftMenu"
 
 export default {
-  components:{Header,LeftMenu},
+  components:{Loading,Header,LeftMenu},
   sockets: {
     getChartList(data) {
       this.$store.dispatch("chartList",data)
-      console.log(22,this.$store.state.chartList)
     }
   },
   methods: {

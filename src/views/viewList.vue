@@ -23,15 +23,19 @@ export default {
     }
   },
   async created() {
+    this.$store.dispatch("loading",true)
     await this.getData()
+    this.$store.dispatch("loading",false)
   },
   methods: {
     async getData() {
       this.list=await this.$api.getViewList()
     },
     async del(x) {
+      this.$store.dispatch("loading",true)
       await this.$api.deleteViewList(x)
       await this.getData()
+      this.$store.dispatch("loading",false)
     }
   }
 }

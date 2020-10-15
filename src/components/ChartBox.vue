@@ -49,9 +49,9 @@ export default {
     changeOpen() {
       this.isOpen=!this.isOpen
       this.$nextTick(()=> {
-        if(this.isOpen) {
+        if(this.isOpen&&this.$refs.chartBoxContent) {
           this.newCount=0
-          this.$refs.chartBoxContent.scrollTop=9999999
+          //this.$refs.chartBoxContent.scrollTop=9999999
         }
       })
     },
