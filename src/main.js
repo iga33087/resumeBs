@@ -13,7 +13,7 @@ import $global from './assets/js/global.js'
 Vue.use(ElementUI, { locale });
 Vue.use(new VueSocketIO({
   debug: true,
-  connection: 'https://resumeback.herokuapp.com',
+  connection: 'https://resumeback.herokuapp.com',  //http://localhost:3000,https://resumeback.herokuapp.com
   vuex: {
     store,
   }
@@ -22,6 +22,11 @@ Vue.use(new VueSocketIO({
 Vue.prototype.$global=$global 
 Vue.prototype.$api=api
 Vue.config.productionTip = false
+
+router.beforeEach((to, from, next) => {
+  document.title=to.meta.title
+  next()
+})
 
 new Vue({
   router,

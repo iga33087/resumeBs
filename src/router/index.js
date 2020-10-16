@@ -11,23 +11,37 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue')
-  },
-  {
     path: '/chartList',
     name: 'chartList',
-    component: () => import('../views/chartList.vue')
+    meta:{
+      title:"聊天室"
+    },
+    component: () => import('../views/chartList.vue'),
+    children:[
+      {
+        path: 'about',
+        name: 'About',
+        component: () => import('../views/About.vue'),
+        meta:{
+          title:"關於"
+        },
+      },
+    ]
   },
   {
     path: '/viewList',
     name: 'viewList',
+    meta:{
+      title:"來訪查看"
+    },
     component: () => import('../views/viewList.vue')
   },
   {
     path: '/resumeEdit',
     name: 'resumeEdit',
+    meta:{
+      title:"履歷編輯"
+    },
     component: () => import('../views/resumeEdit.vue')
   },
 ]

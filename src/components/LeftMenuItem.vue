@@ -9,7 +9,7 @@
     <div class="leftMenuItemBox">
       <i class="leftMenuItemBoxIcon" :class="data.icon"></i>
       <div>{{data.title}}<span v-if="data.newNum">{{data.newNum}}</span></div>
-      <i class="openIcon el-icon-caret-top" :class="{'isOpen':isOpen}" v-if="data.children.length"></i>
+      <i class="openIcon el-icon-caret-bottom" :class="{'isOpen':isOpen}" v-if="data.children.length"></i>
     </div>
     <div class="leftMenuItemBoxChildren" v-if="data.children.length&&isOpen" @click.stop>
       <LeftMenuItem v-for="(item,index) in data.children" :key="index" :data="item"></LeftMenuItem>

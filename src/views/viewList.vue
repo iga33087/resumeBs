@@ -23,6 +23,7 @@ export default {
     }
   },
   async created() {
+    this.$emit("currentRoute",this.$router.currentRoute)
     this.$store.dispatch("loading",true)
     await this.getData()
     this.$store.dispatch("loading",false)
@@ -35,6 +36,10 @@ export default {
       this.$store.dispatch("loading",true)
       await this.$api.deleteViewList(x)
       await this.getData()
+      this.$message({
+        message: '刪除成功',
+        type: 'success'
+      });
       this.$store.dispatch("loading",false)
     }
   }

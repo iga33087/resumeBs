@@ -1,6 +1,6 @@
 <template>
   <div class="chartList">
-    <ChartBox v-for="(item,index) in list" :key="index" :data="item"></ChartBox>
+    <ChartBox v-for="(item,index) in chartList" :key="index" :data="item"></ChartBox>
   </div>
 </template>
 
@@ -15,15 +15,13 @@ export default {
       list:[]
     }
   },
-  sockets: {
-    /*getAllMsg(data) {
-      this.list.push(data)
-      console.log(data)
-      console.log(this.getIdList)
-    },*/
-    getChartList(data) {
-      this.list=data
+  computed: {
+    chartList() {
+      return this.$store.state.chartList
     }
+  },
+  created() {
+    this.$emit("currentRoute",this.$router.currentRoute)
   },
 }
 </script>
