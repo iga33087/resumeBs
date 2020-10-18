@@ -25,6 +25,7 @@ export default {
   async created() {
     this.$emit("currentRoute",this.$router.currentRoute)
     this.$store.dispatch("loading",true)
+    //localStorage.token=await this.$api.login()
     await this.getData()
     this.$store.dispatch("loading",false)
   },
@@ -34,7 +35,11 @@ export default {
     },
     async del(x) {
       this.$store.dispatch("loading",true)
-      await this.$api.deleteViewList(x)
+      let flag=await this.$api.deleteViewList(x)
+      if(flag=="token invalid") {
+        this.$store.dispatch("loading",false)
+        return 0
+      }
       await this.getData()
       this.$message({
         message: '刪除成功',

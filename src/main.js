@@ -24,8 +24,13 @@ Vue.prototype.$api=api
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-  document.title=to.meta.title
-  next()
+  if(to.path!="/login"&&!localStorage.token) {
+    next({path:"/login"})
+  }
+  else {
+    document.title=to.meta.title
+    next()
+  }
 })
 
 new Vue({

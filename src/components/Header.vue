@@ -7,7 +7,7 @@
         </router-link>
       </div>
     </div>
-    <div class="headerAccount">最高管理員</div>
+    <div class="headerAccount" @click="logout">最高管理員</div>
   </div>
 </template>
 
@@ -29,6 +29,16 @@ export default {
     window.addEventListener('beforeunload', ()=> {
       this.$socket.emit("adminOnline",false)
     })
-  }, 
+  },
+  methods: {
+    logout() {
+      let flag=confirm("確定登出?")
+      if(!flag) return 0
+      localStorage.token=""
+      this.$router.push({name:"login"}).catch(err=> {
+        return err
+      })
+    }
+  }
 }
 </script>

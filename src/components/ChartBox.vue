@@ -1,6 +1,6 @@
 <template>
   <div class="chartBox">
-    <div class="chartBoxTitle">
+    <div class="chartBoxTitle" @click="changeOpen">
       <div class="chartBoxTitleText">{{data.id}} ({{data.ip}})</div>
       <div class="chartBoxTitleIconsBox">
         <div class="chartBoxTitleIconsBoxNewCount" v-if="newCount" @click="changeOpen">{{newCount}}</div>
