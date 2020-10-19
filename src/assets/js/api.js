@@ -5,7 +5,6 @@ let baseUrl=process.env.VUE_APP_OIDC_BASEURL
 
 axios.interceptors.request.use(
   config => {
-    config.data = JSON.stringify(config.data);
     config.headers = { // 如果沒有cors的問題則可以都不加
       "token": localStorage.token,
     };
@@ -48,6 +47,9 @@ axios.interceptors.response.use(
 );
 
 export default {
+  testReq(x) {
+    return axios.post("http://localhost:3000/processFetch",x).then(res=>res.data)
+  },
   login(x) {
     return axios.post(baseUrl+"login",x).then(res=>res.data)
   },

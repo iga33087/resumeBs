@@ -25,7 +25,6 @@ export default {
   async created() {
     this.$emit("currentRoute",this.$router.currentRoute)
     this.$store.dispatch("loading",true)
-    //localStorage.token=await this.$api.login()
     await this.getData()
     this.$store.dispatch("loading",false)
   },
