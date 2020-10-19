@@ -29,8 +29,13 @@ export default {
     async sub() {
       this.$store.dispatch("loading",true)
       await this.$api.login(this.form).then(res=> {
-        localStorage.token=res
-        this.$router.push({name:"viewList"})
+        if(res=="帳號或密碼錯誤") {
+          alert(res)
+        }
+        else {
+          localStorage.token=res
+          this.$router.push({name:"viewList"})
+        }
       })
       this.$store.dispatch("loading",false)
     }

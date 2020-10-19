@@ -4,7 +4,7 @@
       <div class="chartBoxTitleText">{{data.id}} ({{data.ip}})</div>
       <div class="chartBoxTitleIconsBox">
         <div class="chartBoxTitleIconsBoxNewCount" v-if="newCount" @click="changeOpen">{{newCount}}</div>
-        <i class="chartBoxTitleIconsBoxItem" :class="isOpen ? 'el-icon-minus' : 'el-icon-full-screen'" @click="changeOpen"></i>
+        <i class="chartBoxTitleIconsBoxItem" :class="isOpen ? 'el-icon-minus' : 'el-icon-full-screen'" @click.stop="changeOpen"></i>
       </div>
     </div>
     <div class="chartBoxContent" ref="chartBoxContent" v-if="isOpen">

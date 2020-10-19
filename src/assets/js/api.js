@@ -48,7 +48,7 @@ axios.interceptors.response.use(
 
 export default {
   testReq(x) {
-    return axios.post("http://localhost:3000/processFetch",x).then(res=>res.data)
+    return axios.post(baseUrl+"testReq",x).then(res=>res.data)
   },
   login(x) {
     return axios.post(baseUrl+"login",x).then(res=>res.data)
