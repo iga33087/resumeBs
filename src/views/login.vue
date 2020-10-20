@@ -2,12 +2,14 @@
   <div class="login">
     <el-form label-width="60px">
       <el-form-item label="帳號">
-        <el-input v-model="form.account"></el-input>
+        <el-input v-model="form.account" @keyup.enter.native="sub"></el-input>
       </el-form-item>
       <el-form-item label="密碼">
-        <el-input v-model="form.password"></el-input>
+        <el-input v-model="form.password" @keyup.enter.native="sub"></el-input>
       </el-form-item>
-      <el-button type="primary" @click="sub">登入</el-button>
+      <div class="buttonList">
+        <el-button type="primary" @click="sub" style="width:100%;">登入</el-button>
+      </div>
     </el-form>
   </div>
 </template>

@@ -50,6 +50,11 @@ a {
   justify-content: flex-end;
 }
 
+.buttonList {
+  display: flex;
+  justify-content: center;
+}
+
 .header {
   height: 40px;
   padding: 0 20px;
@@ -124,6 +129,19 @@ a {
   overflow-y: scroll;
   padding: 20px;
   box-sizing: border-box;
+}
+
+.login {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 97;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .chartBox {
@@ -233,5 +251,17 @@ a {
       &:hover {
         box-shadow: 0 0 5px #222 inset;
       }
+    }
+  }
+
+  .pageMenu {
+    display: flex;
+    .pageMenuSearch {
+      display: flex;
+      margin: 0 10px 0 0;
+    }
+    .pageMenuSearchInput {
+      width: 200px;
+      margin: 0 10px 0 0;
     }
   }

@@ -1,6 +1,8 @@
 <template>
   <div class="viewList">
-    <el-table :data="list" style="width: 100%">
+    <PageMenu @search="search" @batchDelete="batchDelete"></PageMenu>
+    <el-table :data="list" style="width: 100%" @selection-change="handleSelectionChange">
+      <el-table-column type="selection"></el-table-column>
       <el-table-column prop="ip" label="IP"></el-table-column>
       <el-table-column prop="country" label="國家"></el-table-column>
       <el-table-column prop="time" label="建立時間"></el-table-column>
@@ -16,10 +18,14 @@
 </template>
 
 <script>
+import PageMenu from "@/components/PageMenu"
+
 export default {
+  components:{PageMenu},
   data() {
     return {
-      list:[]
+      list:[],
+      handleSelectionChangeArr:[]
     }
   },
   async created() {
@@ -45,6 +51,22 @@ export default {
         type: 'success'
       });
       this.$store.dispatch("loading",false)
+    },
+    search(x) {
+      alert(x)
+    },
+    async batchDelete() {
+      if(!this.handleSelectionChangeArr.length) return 0
+      this.$store.dispatch("loading",true)
+      for(let item of this.handleSelectionChangeArr) {
+        await this.$api.deleteViewList(item.id)
+      }
+      await this.getData()
+      this.$store.dispatch("loading",false)
+    },
+    handleSelectionChange(x) {
+      this.handleSelectionChangeArr=x
+      console.log(this.handleSelectionChangeArr)
     }
   }
 }
