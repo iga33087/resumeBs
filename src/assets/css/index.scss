@@ -11,6 +11,12 @@ $fontSize2:1.3rem;
 $fontSize3:1.2rem;
 $fontSize4:1.1rem;
 
+@mixin rwd($breakpoint) {
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
+
 html,body {
   height: 100%;
   padding: 0;
@@ -25,6 +31,9 @@ a {
 #app {
   height: 100%;
   display: flex;
+  @include rwd($sm) {
+    display: block;
+  }
 }
 
 .loading {
@@ -79,6 +88,49 @@ a {
   background-color: $color1;  
   position: relative;
   z-index: 3;
+  @include rwd($sm) {
+    width: 100%;
+    height: 50px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+  }
+  .leftMenuBlack {
+    @include rwd($sm) {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top:0;
+      left:0;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 97;
+    }    
+  }
+  .leftMenuOpen {
+    color:#fff;
+    font-size: $fontSize1;
+    display: none;
+    @include rwd($sm) {
+      display: block;
+    }
+  }
+  .leftMenuBox {
+    @include rwd($sm) {
+      width: 200px;
+      height: 100%;
+      background-color: $color1;
+      position: fixed;
+      top:0;
+      left:-200px;
+      z-index: 98;
+      transition-duration: 0.2s;
+    }
+  }
+  .open {
+    @include rwd($sm) {
+      left:0;
+    }   
+  }
 }
 
 .leftMenuItem {
@@ -121,6 +173,10 @@ a {
 .content {
   width: calc(100% - 200px);
   height: 100%;
+  @include rwd($sm) {
+    width: 100%;
+    min-height: calc(100% - 50px);
+  }
 }
 
 .routerView {
@@ -129,6 +185,10 @@ a {
   overflow-y: scroll;
   padding: 20px;
   box-sizing: border-box;
+  @include rwd($sm) {
+    height: auto;
+    padding: 20px 10px;
+  }
 }
 
 .login {
@@ -256,6 +316,9 @@ a {
 
   .pageMenu {
     display: flex;
+    @include rwd($sm) {
+      justify-content: space-between;
+    }
     .pageMenuSearch {
       display: flex;
       margin: 0 10px 0 0;
@@ -263,5 +326,8 @@ a {
     .pageMenuSearchInput {
       width: 200px;
       margin: 0 10px 0 0;
+      @include rwd($sm) {
+        width: 150px;
+      }
     }
   }

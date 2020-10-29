@@ -5,7 +5,7 @@
         <el-input v-model="form.account" @keyup.enter.native="sub"></el-input>
       </el-form-item>
       <el-form-item label="密碼">
-        <el-input v-model="form.password" @keyup.enter.native="sub"></el-input>
+        <el-input v-model="form.password" @keyup.enter.native="sub" show-password></el-input>
       </el-form-item>
       <div class="buttonList">
         <el-button type="primary" @click="sub" style="width:100%;">登入</el-button>

@@ -13,6 +13,7 @@ import $global from './assets/js/global.js'
 Vue.use(ElementUI, { locale });
 Vue.use(new VueSocketIO({
   debug: true,
+  autoConnect: false,
   connection: 'https://resumeback.herokuapp.com',  //http://localhost:3000,https://resumeback.herokuapp.com
   vuex: {
     store,
